@@ -189,6 +189,27 @@ function takedamage(dmg) {
     return dmg
 }
 
+function flee(enemy, choice) {
+    if (random(1, 3) != 1) {
+        let dmg = takedamage(random(enemy.MinDamage, enemy.MaxDamage))
+
+        if (choice) {
+            console.log(`The ${enemy.Name} attacks you as you scram. -${dmg} HP`)
+        }
+        else {
+            console.log(`You get hurt, but manage to flee. -${dmg} HP`)
+        }
+    }
+    else {
+        if (choice) {
+            console.log(`The ${enemy.Name} attacks you as you scram but misses.`)
+        }
+        else {
+            console.log("You manage to flee unscathed.")
+        }
+    }
+}
+
 function battle() {
     if (health <= 0) {
         return
@@ -277,9 +298,7 @@ function battle() {
                 }
             }
             else if (choice == 3) {
-                let dmg = takedamage(random(enemy.MinDamage, enemy.MaxDamage))
-
-                console.log(`The ${enemy.Name} attacks as you scram. -${dmg} HP`)
+                flee(enemy, true)
                 break
             }
             else {
@@ -321,8 +340,8 @@ function battle() {
                         console.log(`You are forced to use your ${weapon.Name}.`)
                     }
                     else {
-                        let dmg = takedamage(random(enemy.MinDamage, enemy.MaxDamage))
-                        console.log(`You have no weapons! You get injured, but manage to run away. -${dmg} HP`)
+                        console.log("You have no weapons!")
+                        flee(enemy)
                         break
                     }
                 }
@@ -383,16 +402,16 @@ function battle() {
                 }
                 else {
                         if (weapons.length == 0) {
-                            let dmg = takedamage(random(enemy.MinDamage, enemy.MaxDamage))
-                            console.log(`You have no weapons! You get injured, but manage to run away. -${dmg} HP`)
+                            console.log("You have no weapons!")
+                            flee(enemy)
                         }
                     }
                 }
             }
         }
         else {
-            let dmg = takedamage(random(enemy.MinDamage, enemy.MaxDamage))
-            console.log(`You have no weapons! You get injured, but manage to run away. -${dmg} HP`)
+            console.log("You have no weapons!")
+            flee(enemy)
         }
 }
 
@@ -433,9 +452,10 @@ while (true) {
                 }
 
                 let chests = random(1, selected.Chests)
+                let loot = []
 
+                console.log(`Opening ${chests} chest(s)!`)
                 for (let i = 0; (i < chests); i++) {
-                    console.log("Opening chest!")
                     selected.Loot.forEach(item => {
                         if ((item.Rarity && random(1, item.Rarity) == 1) || (!item.Rarity)) {
                             let amount = 1
@@ -451,10 +471,21 @@ while (true) {
                                     }
                                 }
                             }
-                            console.log(`You got x${amount} ${item.Item}(s)!`)
+
+                            const thisloot = find(loot, "Name", item.Item)
+                            if (thisloot == -1) {
+                                loot.push({Name: item.Item, Amount: amount})
+                            }
+                            else {
+                                thisloot.Amount += amount
+                            }
                         }
                     })
                 }
+
+                loot.forEach(data => {
+                    console.log(`You got x${data.Amount} ${data.Name}(s)!`)
+                })
 
                 if (!now) {
                     battle()
