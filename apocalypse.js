@@ -12,7 +12,7 @@ const items = [
     {Name: "Apple", Type: "Food", Owned: 0, Heals: 5},
     {Name: "Bread", Type: "Food", Owned: 0, Heals: 10},
     {Name: "Steak", Type: "Food", Owned: 0, Heals: 20},
-    {Name: "Medkit", Type: "Food", Owned: 0, Heals: 50}
+    {Name: "Medkit", Type: "Food", Owned: 0, Heals: 50},
 
     // Weapons //
     
