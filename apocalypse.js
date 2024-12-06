@@ -12,6 +12,7 @@ const items = [
     {Name: "Apple", Type: "Food", Owned: 0, Heals: 5},
     {Name: "Bread", Type: "Food", Owned: 0, Heals: 10},
     {Name: "Steak", Type: "Food", Owned: 0, Heals: 20},
+    {Name: "Medkit", Type: "Food", Owned: 0, Heals: 50}
 
     // Weapons //
     
@@ -30,7 +31,8 @@ const items = [
 
     // Explosives
     {Name: "Grenade", Type: "Explosive", Owned: 0, Damage: 30},
-    {Name: "Dynamite", Type: "Explosive", Owned: 0, Damage: 50}
+    {Name: "Dynamite", Type: "Explosive", Owned: 0, Damage: 50},
+    {Name: "C4", Type: "Explosive", Owned: 0, Damage: 100}
 ]
 const places = [
     {Name: "House", Chests: 3, MinZombies: 3, MaxZombies: 6, Loot: [
@@ -40,6 +42,9 @@ const places = [
         {Item: "Dust ball", Rarity: 2, Min: 4, Max: 9},
         {Item: "Hammer", Rarity: 14},
         {Item: "Rusty dagger", Rarity: 10},
+        {Item: "Apple", Rarity: 20},
+        {Item: "Bread", Rarity: 30},
+        {Item: "Medkit", Rarity: 65}
     ]},
     {Name: "Shack", Chests: 2, Rarity: 3, MinZombies: 1, MaxZombies: 4, Loot: [
         {Item: "Arrow", Rarity: 2, Min: 3, Max: 8},
@@ -62,6 +67,7 @@ const places = [
         {Item: "Copper shortsword", Rarity: 14},
         {Item: "Iron broadsword", Rarity: 20},
         {Item: "Golden greatsword", Rarity: 40},
+        {Item: "Medkit", Rarity: 50},
         {Item: "Katana", Rarity: 60}
     ]},
     {Name: "Dungeon", Chests: 2, Rarity: 12, MinZombies: 2, MaxZombies: 4, Loot: [
@@ -75,7 +81,9 @@ const places = [
         {Item: "Iron broadsword", Rarity: 12},
         {Item: "Golden greatsword", Rarity: 20},
         {Item: "Katana", Rarity: 24},
-        {Item: "Diamond longsword", Rarity: 40}
+        {Item: "Dynamite", Rarity: 32, Min: 1, Max: 2},
+        {Item: "Diamond longsword", Rarity: 40},
+        {Item: "C4", Rarity: 50}
     ]}
 ]
 const zombies = [
@@ -102,7 +110,9 @@ const zombies = [
         {Item: "Bread", Rarity: 5},
         {Item: "Steak", Rarity: 7},
         {Item: "Copper shortsword", Rarity: 8},
-        {Item: "Iron broadsword", Rarity: 20}
+        {Item: "Iron broadsword", Rarity: 20},
+        {Item: "Grenade", Rarity: 16, Min: 1, Max: 2},
+        {Item: "Medkit", Rarity: 32}
     ]}
 ]
 
