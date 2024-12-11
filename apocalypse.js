@@ -14,6 +14,9 @@ const items = [
     {Name: "Steak", Type: "Food", Owned: 0, Heals: 20},
     {Name: "Medkit", Type: "Food", Owned: 0, Heals: 50},
 
+    // Armor //
+
+
     // Weapons //
     
     // Projectiles
@@ -118,8 +121,9 @@ const zombies = [
 
 // player
 let health = 100
-let maxhealth = health
+const maxhealth = health
 let armor = 0
+const maxarmor = 100
 let inventory = []
 
 items.forEach(item => {
@@ -183,6 +187,7 @@ function attack(pool, dmg) {
 }
 
 function takedamage(dmg) {
+    armor = clamp((armor - dmg), 0, maxarmor)
     dmg = clamp((dmg - armor), 0, dmg)
     health = clamp((health - dmg), 0, maxhealth)
 
