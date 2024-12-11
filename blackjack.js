@@ -167,7 +167,7 @@ while (true) {
        console.log(`Hit! +${thishit} | Your card sum: ${cards}`)
    }
    else {
-        if (stand == false && cards < 21 && dealercards < 21) {
+        if (!stand && cards < 21 && dealercards < 21) {
             console.log(`Stand at ${cards}!`)
             stand = true
         }
@@ -183,7 +183,7 @@ while (true) {
            reset()
        }
        else {
-            if (natural == false) {
+            if (!natural) {
                 console.log(`Blackjack! You won: $${bet}!`)
                 reset("win")
             }
@@ -194,7 +194,7 @@ while (true) {
        }
    }
    else if (dealercards == 21) {
-       if (dealernatural == false) {
+       if (!dealernatural) {
             console.log(`Loss Blackjack! The dealer has repossessed your bet of $${bet}.`)
             reset("lose")
        }
